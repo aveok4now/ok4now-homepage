@@ -1,5 +1,5 @@
-import React from "@astrojs/react";
 import type { ReactNode } from "react";
+import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 interface Props {
@@ -7,10 +7,11 @@ interface Props {
 	typeSpeed?: number;
 	deleteSpeed?: number;
 	delaySpeed?: number;
-	loop?: number | boolean;
+	loop?: boolean;
 	cursor?: boolean;
 	cursorStyle?: ReactNode;
 	cursorBlinking?: boolean;
+    className?: string;
 }
 
 export default function TypeWriter({
@@ -22,9 +23,10 @@ export default function TypeWriter({
 	cursor = false,
 	cursorStyle,
 	cursorBlinking = true,
+    className
 }: Props) {
 	return (
-		<div>
+		<div className={`${className}`}>
 			<Typewriter
 				words={words}
 				typeSpeed={typeSpeed}
