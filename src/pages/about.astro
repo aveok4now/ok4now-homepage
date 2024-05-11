@@ -1,0 +1,41 @@
+---
+import Content from "../components/Content.astro";
+import Masthead from "../components/Masthead.astro";
+import Layout from "../layouts/Layout.astro";
+
+const title = "About me";
+---
+
+<Layout title={title}>
+	<main class="pt-[56px] w-screen min-h-screen">
+		<Masthead page={title} />
+		<Content>
+			<section>
+				<p class="indent-4">
+					Sup. My name is <b>Slava Ch</b>. Currently, I'm diving into <a
+						href="https://laravel.com/"
+						><b>Laravel</b>, <a href="https://docs.astro.build/"><b>Astro</b></a
+						> & <a href="https://react.dev/"><b>React</b></a>. For now I haven't
+						yet defined a clear career path, I'm drawn towards <b
+							>frontend development</b
+						>. This inclination stems from my desire to translate my creative
+						ideas into tangible experiences. Combining technology with
+						creativity allows me to craft dynamic and visually stunning
+						applications that resonate with users. It's the perfect blend of
+						technical expertise and artistic expression that ignites my passion
+						for frontend development. Despite my extensive experience with <a
+							href="https://vuejs.org/"><b>Vue</b></a
+						>
+						in commercial projects, what truly captivates me are frontend frameworks
+						like <a href="https://react.dev/"><b>React</b></a> and <a
+							href="https://docs.astro.build/"><b>Astro</b></a
+						>. I would also absolutely not mind putting my skills and enthusiasm
+						into creating great projects on <a href="https://reactnative.dev/"
+							><b>React Native</b></a
+						>.
+					</a>
+				</p>
+			</section>
+		</Content>
+	</main>
+</Layout>
