@@ -1,6 +1,6 @@
 import Genius from "genius-lyrics";
 
-const geniusAuthToken = import.meta.env["GENIUS_PERSONAL_ACCESS_TOKEN"] || "";
+const geniusAuthToken = import.meta.env.GENIUS_PERSONAL_ACCESS_TOKEN || "";
 const Client = new Genius.Client(geniusAuthToken);
 const fallBack = ["I guess it's okay for now"];
 
