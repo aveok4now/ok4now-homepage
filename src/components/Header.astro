@@ -1,18 +1,32 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { AUTHOR_NAME, GH_LINK, TG_LINK } from "../config";
+import { Icon } from "astro-icon/components";
 ---
 
-<header class="bg-transparent backdrop-blur-xl fixed w-full z-10 p-4">
-	<div class="mx-auto max-w-2xl">
-		<nav class="flex items-center gap-2">
-			<span class="font-bold self-start dark:text-purple-300">
+<header class="bg-transparent backdrop-blur-3xl fixed w-full z-10 p-2">
+	<div class="mx-auto max-w-3xl">
+		<nav class="flex items-center gap-4">
+			<span class="font-bold dark:text-purple-300 tracking-tight">
 				{AUTHOR_NAME}</span
 			>
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href={GH_LINK} target="_blank">GitHub</HeaderLink>
-			<HeaderLink href={TG_LINK} target="_blank">Telegram</HeaderLink>
+
+			<div class="hidden md:flex w-full justify-between">
+				<div class="flex items-center gap-4">
+					<HeaderLink href="/">Home</HeaderLink>
+					<HeaderLink href="/about">About</HeaderLink>
+					<HeaderLink href={GH_LINK} target="_blank">
+						<Icon
+							name="mdi:github"
+							size={24}
+							class="hover:text-white dark:hover:text-purple-300 transition-colors duration-300"
+						/>
+					</HeaderLink>
+					<HeaderLink href={TG_LINK} target="_blank">
+						<Icon name="logos:telegram" size={22} />
+					</HeaderLink>
+				</div>
+			</div>
 		</nav>
 	</div>
 </header>
