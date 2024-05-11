@@ -7,28 +7,16 @@ import { Icon } from "astro-icon/components";
 <header class="bg-transparent backdrop-blur-3xl fixed w-full z-10 p-2">
 	<div class="mx-auto max-w-3xl">
 		<nav class="flex items-center gap-4">
-			<span class="dark:text-purple-300 tracking-tight font-black">
+			<span class="dark:text-purple-300 tracking-tight font-black up">
 				{AUTHOR_NAME}</span
 			>
 
-			<div class="hidden md:flex w-full justify-between">
+			<div class="hidden md:flex justify-between">
 				<div class="flex items-center gap-4">
-					<HeaderLink
-						href="/"
-						class="dark:hover:text-purple-300 tranisiton-colors duration-300"
-						>Home</HeaderLink
-					>
-					<HeaderLink
-						href="/about"
-						class="dark:hover:text-purple-300 tranisiton-colors duration-300"
-						>About</HeaderLink
-					>
+					<HeaderLink href="/">Home</HeaderLink>
+					<HeaderLink href="/about">About</HeaderLink>
 					<HeaderLink href={GH_LINK} target="_blank">
-						<Icon
-							name="mdi:github"
-							size={24}
-							class="hover:text-white dark:hover:text-purple-300 transition-colors duration-300"
-						/>
+						<Icon name="mdi:github" size={24} class="" />
 					</HeaderLink>
 					<HeaderLink href={TG_LINK} target="_blank">
 						<Icon name="logos:telegram" size={22} class="fill-purple-300" />
