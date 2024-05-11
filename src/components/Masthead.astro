@@ -1,3 +1,12 @@
+---
+interface Props {
+	video?: string;
+	page: string;
+}
+
+const { video = "/video/Ok 4 Now.mp4", page } = Astro.props;
+---
+
 <section class="relative mb-6 h-80 flex justify-center items-center">
 	<div class="absolute w-full h-full overflow-hidden">
 		<video
@@ -5,13 +14,13 @@
 			autoplay="autoplay"
 			muted="muted"
 			loop="loop"
-			playsinline><source src="/video/Ok 4 Now.mp4" type="video/mp4" /></video
+			playsinline><source src={video} type="video/mp4" /></video
 		>
 	</div>
 	<div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
 		<div class="uppercase text-sm mb-4">Welcome to</div>
 		<div class="text-4xl font-medium">
-			<span class="font-bold">About me </span> page
+			<span class="font-bold">{page} </span> page
 		</div>
 	</div>
 </section>

@@ -1,16 +1,17 @@
 ---
 import Content from "../components/Content.astro";
 import Masthead from "../components/Masthead.astro";
-import TypeWriter from "../components/TypeWriter.tsx";
 import Layout from "../layouts/Layout.astro";
+
+const title = "About me";
 ---
 
-<Layout title="About me">
+<Layout title={title}>
 	<main class="pt-[56px] w-screen min-h-screen">
-		<Masthead />
+		<Masthead page={title} />
 		<Content>
 			<section>
-				<p class="mb-8 indent-4">
+				<p class="indent-4">
 					Sup. My name is <b>Slava Ch</b>. Currently, I'm diving into <a
 						href="https://laravel.com/"
 						><b>Laravel</b>, <a href="https://docs.astro.build/"><b>Astro</b></a
@@ -32,26 +33,6 @@ import Layout from "../layouts/Layout.astro";
 						into creating great projects on <a href="https://reactnative.dev/"
 							><b>React Native</b></a
 						>.
-						<blockquote
-							class="indent-0 text-center font-light w-full opacity-50 hover:opacity-100 transition-opacity duration-500"
-						>
-							<a href="https://www.github.com/aveok4now">
-								<code>
-									<TypeWriter
-										words={[
-											"I guess it's okay for now",
-											"Put my pride to your side",
-											"Don't wanna let you down",
-											"Take me heart and crash it",
-										]}
-										loop={false}
-										typeSpeed={100}
-										deleteSpeed={25}
-										client:load
-									/>
-								</code>
-							</a>
-						</blockquote>
 					</a>
 				</p>
 			</section>
