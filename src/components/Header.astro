@@ -1,0 +1,18 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { AUTHOR_NAME, GH_LINK, TG_LINK } from "../config";
+---
+
+<header class="bg-transparent backdrop-blur-xl fixed w-full z-10 p-4">
+	<div class="mx-auto max-w-2xl">
+		<nav class="flex items-center gap-2">
+			<span class="font-bold self-start dark:text-purple-300">
+				{AUTHOR_NAME}</span
+			>
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+			<HeaderLink href={GH_LINK} target="_blank">GitHub</HeaderLink>
+			<HeaderLink href={TG_LINK} target="_blank">Telegram</HeaderLink>
+		</nav>
+	</div>
+</header>
