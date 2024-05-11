@@ -1,0 +1,32 @@
+---
+import { GH_LINK, SKIES_4NOW_LINK } from "../config";
+import TypeWriter from "./TypeWriter";
+
+const today = new Date();
+---
+
+<footer class="text-zinc-500 p-4 text-center">
+	&copy; {today.getFullYear()}
+	<a href={GH_LINK}>Slava Ch</a>. All rights reserved.
+	<blockquote
+		class="indent-0 text-center font-light opacity-50 hover:opacity-100 transition-opacity duration-500"
+	>
+		<a href={SKIES_4NOW_LINK}>
+			<code class="text-white">
+				//TODO: genius
+				<TypeWriter
+					words={[
+						"I guess it's okay for now",
+						"Put my pride to your side",
+						"Don't wanna let you down",
+						"Take me heart and crash it",
+					]}
+					loop={false}
+					typeSpeed={100}
+					deleteSpeed={25}
+					client:load
+				/>
+			</code>
+		</a>
+	</blockquote>
+</footer>
