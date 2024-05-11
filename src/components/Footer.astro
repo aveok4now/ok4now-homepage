@@ -1,8 +1,12 @@
 ---
 import { GH_LINK, SKIES_4NOW_LINK } from "../config";
 import TypeWriter from "./TypeWriter";
+import { getLyrics } from "../pages/api/ok4now-genius";
 
 const today = new Date();
+
+const lyrics = await getLyrics();
+const formattedLyrics = lyrics.map((line) => `"${line}"`);
 ---
 
 <footer class="text-zinc-500 p-4 text-center">
@@ -15,12 +19,7 @@ const today = new Date();
 	>
 		<code class="text-sm hover:text-white transition-colors duration-700">
 			<TypeWriter
-				words={[
-					"I guess it's okay for now",
-					"Put my pride to your side",
-					"Don't wanna let you down",
-					"Take me heart and crash it",
-				]}
+				words={formattedLyrics}
 				loop={false}
 				typeSpeed={100}
 				deleteSpeed={25}
