@@ -8,8 +8,12 @@ export async function getLyrics(): Promise<string[]> {
 	try {
 		const searches = await Client.songs.search("Lil Skies - Ok 4 Now");
 		const firstSong = searches[0];
-		const lyrics = await firstSong.lyrics();
-		return lyrics.split("\n").filter((line) => line.trim() !== "");
+		const lyrics = await firstSong.lyrics(true);
+		return lyrics
+			.split("\n")
+			.filter((line) => line.trim() !== "")
+			.map((line) => line.replace(/[()]/g, ""))
+			.map((line) => `"${line}"`);
 	} catch (err) {
 		return fallBack;
 	}
