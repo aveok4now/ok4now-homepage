@@ -8,24 +8,24 @@ const today = new Date();
 <footer class="text-zinc-500 p-4 text-center">
 	&copy; {today.getFullYear()}
 	<a href={GH_LINK}>Slava Ch</a>. All rights reserved.
-	<blockquote
-		class="indent-0 text-center font-light opacity-50 hover:opacity-100 transition-opacity duration-500"
+
+	<a
+		href={SKIES_4NOW_LINK}
+		class="flex justify-center items-center overflow-hidden h-8"
 	>
-		<a href={SKIES_4NOW_LINK}>
-			<code class="text-white">
-				<TypeWriter
-					words={[
-						"I guess it's okay for now",
-						"Put my pride to your side",
-						"Don't wanna let you down",
-						"Take me heart and crash it",
-					]}
-					loop={false}
-					typeSpeed={100}
-					deleteSpeed={25}
-					client:load
-				/>
-			</code>
-		</a>
-	</blockquote>
+		<code class="text-sm hover:text-white transition-colors duration-700">
+			<TypeWriter
+				words={[
+					"I guess it's okay for now",
+					"Put my pride to your side",
+					"Don't wanna let you down",
+					"Take me heart and crash it",
+				]}
+				loop={false}
+				typeSpeed={100}
+				deleteSpeed={25}
+				client:visible
+			/>
+		</code>
+	</a>
 </footer>
