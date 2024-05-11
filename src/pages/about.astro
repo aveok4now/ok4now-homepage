@@ -1,6 +1,7 @@
 ---
 import Content from "../components/Content.astro";
 import Masthead from "../components/Masthead.astro";
+import TypeWriter from "../components/TypeWriter.tsx";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -32,11 +33,23 @@ import Layout from "../layouts/Layout.astro";
 							><b>React Native</b></a
 						>.
 						<blockquote
-							class="indent-0 text-white font-light w-full bg-black opacity-50 hover:opacity-100 transition-opacity duration-500"
+							class="indent-0 text-center text-white font-light w-full bg-black opacity-50 hover:opacity-100 transition-opacity duration-500"
 						>
 							<a href="https://www.github.com/aveok4now">
 								<code class="">
-									I guess it's okay for now <br />
+									<TypeWriter
+										className="text-white"
+										words={[
+											"I guess it's okay for now",
+											"Put my pride to your side",
+											"Don't wanna let you down",
+											"Take me heart and crash it",
+										]}
+										loop={false}
+										typeSpeed={100}
+										deleteSpeed={25}
+										client:load
+									/>
 								</code>
 							</a>
 						</blockquote>
