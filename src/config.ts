@@ -8,6 +8,7 @@ export const SITE_DESCRIPTION =
 
 // Social Links
 export const GH_LINK = "https://github.com/aveok4now";
+export const TG_LINK = "https://t.me/avok4now";
 
 // Others
 export const SKIES_4NOW_LINK = "https://www.youtube.com/watch?v=iolngkQEp-Y&ab_channel=LilSkies"

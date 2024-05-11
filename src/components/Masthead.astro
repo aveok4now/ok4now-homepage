@@ -7,20 +7,22 @@ interface Props {
 const { video = "/video/Ok 4 Now.mp4", page } = Astro.props;
 ---
 
-<section class="relative mb-6 h-80 flex justify-center items-center">
-	<div class="absolute w-full h-full overflow-hidden">
-		<video
-			class="absolute h-auto left-1/2 top-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 opacity-50 dark:opacity-30"
-			autoplay="autoplay"
-			muted="muted"
-			loop="loop"
-			playsinline><source src={video} type="video/mp4" /></video
-		>
-	</div>
-	<div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
-		<div class="uppercase text-sm mb-4">Welcome to</div>
-		<div class="text-4xl font-medium">
-			<span class="font-bold">{page} </span> page
+<main class="pt-10 min-w-screen">
+	<section class="relative mb-6 h-80 flex justify-center items-center">
+		<div class="absolute w-full h-full overflow-hidden">
+			<video
+				class="absolute h-auto left-1/2 top-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 opacity-50 dark:opacity-30"
+				autoplay="autoplay"
+				muted="muted"
+				loop="loop"
+				playsinline><source src={video} type="video/mp4" /></video
+			>
 		</div>
-	</div>
-</section>
+		<div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
+			<div class="uppercase text-sm mb-4">Welcome to</div>
+			<div class="text-4xl font-medium">
+				<span class="font-bold dark:text-purple-300">{page} </span> page
+			</div>
+		</div>
+	</section>
+</main>
