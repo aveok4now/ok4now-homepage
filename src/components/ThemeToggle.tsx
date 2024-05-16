@@ -1,16 +1,18 @@
-import * as React from "react";
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 
+const themes: ("light" | "dark")[] = ["light", "dark"];
 export function ThemeToggle() {
-	const [theme, setThemeState] = React.useState<
-		"theme-light" | "dark" | "system"
-	>("theme-light");
+	const [theme, setThemeState] = useState<"light" | "dark" | "system">(
+		"system"
+	);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const isDarkMode = document.documentElement.classList.contains("dark");
-		setThemeState(isDarkMode ? "dark" : "theme-light");
+		setThemeState(isDarkMode ? "dark" : "light");
 	}, []);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const isDark =
 			theme === "dark" ||
 			(theme === "system" &&
@@ -19,10 +21,25 @@ export function ThemeToggle() {
 	}, [theme]);
 
 	return (
-		<>
-			<span  onClick={() => setThemeState("theme-light")} className="cursor-pointer">Light</span>
-			<span onClick={() => setThemeState("dark")} className="cursor-pointer">Dark</span>
-			<span onClick={() => setThemeState("system")} className="cursor-pointer">System</span>
-		</>
+		<div className="inline-flex items-center rounded-md bg-purple-300 dark:bg-black">
+			{themes.map((t) => {
+				const checked = t === theme;
+				return (
+					<button
+						key={t}
+						className={`${
+							checked ? "bg-white text-purple-700" : ""
+						} cursor-pointer rounded-md p-1`}
+						onClick={() => setThemeState(t)}
+					>
+						{t === "light" ? (
+							<Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-90 transition-all duration-300 dark:-rotate-90 dark:scale-100" />
+						) : (
+							<Moon className="h-[1.2rem] w-[1.2rem] scale-90 transition-all dark:scale-100" />
+						)}
+					</button>
+				);
+			})}
+		</div>
 	);
 }
