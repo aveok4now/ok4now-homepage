@@ -1,24 +1,27 @@
 ---
 interface Props {
 	video?: string;
+	className?: string;
 	page: string;
 }
 
-const { video = "/video/Ok 4 Now.mp4", page } = Astro.props;
+const { video = "/video/Ok 4 Now.mp4", className, page } = Astro.props;
 ---
 
 <main class="pt-10 min-w-screen">
 	<section class="relative mb-6 h-80 flex justify-center items-center">
 		<div class="absolute w-full h-full overflow-hidden">
 			<video
-				class="absolute h-auto left-1/2 top-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 opacity-50 dark:opacity-30"
+				class=`absolute h-auto left-1/2 top-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 opacity-50 dark:opacity-30 ${className}`
 				autoplay="autoplay"
 				muted="muted"
 				loop="loop"
 				playsinline><source src={video} type="video/mp4" /></video
 			>
 		</div>
-		<div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
+		<div
+			class="z-10 text-center px-8 drop-shadow-lg shadow-black backdrop-blur-xs"
+		>
 			<div class="uppercase text-sm mb-4">Welcome to</div>
 			<div class="text-4xl font-medium">
 				<span class="font-bold dark:text-purple-300">{page} </span> page
