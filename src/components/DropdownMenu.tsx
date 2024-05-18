@@ -1,13 +1,17 @@
 import { HomeIcon, Menu, VenetianMask } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export function DropdownMenu() {
 	const [isOpen, setIsOpen] = useState(false);
+	const currentPath = window.location.pathname;
 
-	const links = [
-		{ href: "/", label: "Home page", icon: HomeIcon },
-		{ href: "/about", label: "About me",  icon: VenetianMask },
-	];
+	const links = useMemo(
+		() => [
+			{ href: "/", label: "Home page", icon: HomeIcon },
+			{ href: "/about", label: "About me", icon: VenetianMask },
+		],
+		[]
+	);
 
 	return (
 		<div className="relative inline-flex">
@@ -33,18 +37,24 @@ export function DropdownMenu() {
 					tabIndex={-1}
 				>
 					<div role="none" className="">
-						{links.map((link) => {
-							const Icon = link.icon;
+						{links.map(({ href, label, icon: Icon }) => {
+							const isActive = currentPath === href;
+							const itemClasses = `
+							text-black font-regular dark:text-purple-300 px-4 py-2 text-sm 
+							cursor-pointer hover:bg-purple-300/30 rounded-md flex items-center text-center gap-x-1.5
+							${isActive ? "bg-purple-300/20 font-black" : ""}	
+						`;
+
 							return (
 								<a
-									key={link.href}
-									href={link.href}		
-									className="text-black font-regular dark:text-purple-300 px-4 py-2 text-sm cursor-pointer hover:bg-purple-300/30 rounded-md flex items-center text-center gap-x-1.5"
+									key={href}
+									href={href}
+									className={itemClasses}
 									role="menuitem"
 									tabIndex={-1}
 								>
-									<Icon size={12} className="text-black/50 dark:text-white"/>
-									{link.label}
+									<Icon size={12} className="text-black/50 dark:text-white" />
+									{label}
 								</a>
 							);
 						})}
