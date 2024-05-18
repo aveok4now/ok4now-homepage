@@ -28,8 +28,8 @@ export function ThemeToggle() {
 					<button
 						key={t}
 						className={`${
-							checked ? "bg-white text-purple-700" : ""
-						} cursor-pointer rounded-md p-1`}
+							checked ? "bg-white text-purple-700 ring-1 ring-inset ring-black dark:ring-purple-300" : ""
+						} cursor-pointer rounded-md p-1 `}
 						onClick={() => setThemeState(t)}
 					>
 						{t === "light" ? (
