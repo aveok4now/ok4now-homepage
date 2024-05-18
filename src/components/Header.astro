@@ -3,6 +3,7 @@ import HeaderLink from "./HeaderLink.astro";
 import { AUTHOR_NAME, GH_LINK, TG_LINK } from "../config";
 import { Icon } from "astro-icon/components";
 import { ThemeToggle } from "./ThemeToggle";
+import { DropdownMenu } from "./DropdownMenu";
 ---
 
 <header
@@ -28,6 +29,7 @@ import { ThemeToggle } from "./ThemeToggle";
 			</div>
 			<div class="flex-1"></div>
 			<ThemeToggle client:visible />
+			<DropdownMenu client:visible client:only />
 		</nav>
 	</div>
 </header>
