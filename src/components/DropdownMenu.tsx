@@ -1,66 +1,61 @@
-import { HomeIcon, Menu, VenetianMask } from "lucide-react";
-import { useMemo, useState } from "react";
+import { Menu, MenuButton, MenuItems, Transition } from "@headlessui/react";
+import { HomeIcon, Menu as MenuIcon, VenetianMask } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
+import { DropdownMenuItem } from "./DropdownMenuItem";
+
+const links = [
+	{ href: "/", label: "Home", icon: <HomeIcon size={18} /> },
+	{ href: "/about", label: "About me", icon: <VenetianMask size={18} /> },
+];
+const currentPath = window.location.pathname;
 
 export function DropdownMenu() {
-	const [isOpen, setIsOpen] = useState(false);
-	const currentPath = window.location.pathname;
-
-	const links = useMemo(
-		() => [
-			{ href: "/", label: "Home page", icon: HomeIcon },
-			{ href: "/about", label: "About me", icon: VenetianMask },
-		],
-		[]
-	);
-
 	return (
-		<div className="relative inline-flex">
+		<Menu as="div" className="relative inline-flex text-left">
 			<div className="inline-flex items-center self-center rounded-md">
-				<button
-					type="button"
-					className="rounded-md p-1 bg-purple-300 dark:bg-black dark:text-white shadow-sm ring-1 ring-inset ring-black dark:ring-purple-300 transition-all duration-100"
-					id="menu-button"
-					aria-expanded="true"
-					aria-haspopup="true"
-					onClick={() => setIsOpen(!isOpen)}
-				>
-					<Menu className="h-[1.2rem] w-[1.2rem] transition-all duration-300 scale-10 active:-scale-100" />
-				</button>
+				<MenuButton className="rounded-md p-1 bg-purple-300 dark:bg-black dark:text-white shadow-sm ring-1 ring-black dark:ring-purple-300 transition-all duration-100 font-medium hover:bg-purple-400 dark:hover:bg-purple-300 focus:ring-inset focus:ring-offset-purple-100">
+					<MenuIcon className="h-[1.2rem] w-[1.2rem] transition-all duration-300 scale-10 active:-scale-100 hover:text-white dark:text-white dark:hover:text-black" />
+				</MenuButton>
 			</div>
 
-			{isOpen && (
-				<div
-					className="absolute right-0 z-10 mt-9 w-32 origin-top-right rounded-md bg-white/90 dark:bg-black/90 backdrop-blur-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-300"
-					role="menu"
-					aria-orientation="vertical"
-					aria-labelledby="menu-button"
-					tabIndex={-1}
+			<Transition
+				as={Fragment}
+				enter="transition ease-in-out duration-300"
+				enterFrom="transfrom opacity-0 scale-95"
+				enterTo="transform opacity-100 scale-100"
+				leave="transition ease-in duration-80"
+				leaveFrom="transform opacity-100 scale-100"
+				leaveTo="transfrom opacityo-0 scale-95"
+			>
+				<MenuItems
+					anchor="bottom end"
+					className="w-36 mt-2 origin-top-right rounded-md bg-white/85 dark:bg-black/90 backdrop-blur-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-50"
 				>
-					<div role="none" className="">
-						{links.map(({ href, label, icon: Icon }) => {
+					<div className="">
+						{links.map(({ href, label, icon: Icon }, index) => {
 							const isActive = currentPath === href;
+
 							const itemClasses = `
-							text-black font-regular dark:text-purple-300 px-4 py-2 text-sm 
-							cursor-pointer hover:bg-purple-300/30 rounded-md flex items-center text-center gap-x-1.5
-							${isActive ? "bg-purple-300/20 font-black" : ""}	
-						`;
+							text-sm text-black dark:text-purple-300 
+							hover:bg-purple-300/30 dark:hover:text-white 
+							transition-all duration-300
+							${isActive ? "bg-purple-300/20 font-bold" : ""}
+							${index % 2 !== 0 ? "rounded-b-md" : "rounded-t-md"}
+							`;
 
 							return (
-								<a
-									key={href}
+								<DropdownMenuItem
+									key={index}
 									href={href}
+									label={label}
+									icon={Icon}
 									className={itemClasses}
-									role="menuitem"
-									tabIndex={-1}
-								>
-									<Icon size={12} className="text-black/50 dark:text-white" />
-									{label}
-								</a>
+								/>
 							);
 						})}
 					</div>
-				</div>
-			)}
-		</div>
+				</MenuItems>
+			</Transition>
+		</Menu>
 	);
 }
